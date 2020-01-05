@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/arily/ewc-matchmaking/issues"
   },
-  "homepage": "https://github.com/arily/ewc-matchmaking#readme"
+  "homepage": "https://github.com/arily/ewc-matchmaking#readme",
+  "dependencies": {
+    "ewc-api": "github:arily/ewc-api"
+  }
 }
