@@ -1,5 +1,5 @@
 const AbortController = require('abort-controller');
-const EApi = require("EApi");
+const EApi = require("ewc-api");
 const E = new EApi();
 
 function timeoutSignal(timeout = 5) {
