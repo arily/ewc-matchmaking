@@ -15,6 +15,7 @@ function MatchmakingPlayer() {
 
 }
 MatchmakingPlayer.prototype.init = async function(player) {
+    this.handle = player.handle;
     this.qq = player.qq;
     this.id = player.id;
     this.name = player.name;

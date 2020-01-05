@@ -26,6 +26,9 @@ Matchmaking.prototype.findByQQ = function(qq) {
 Matchmaking.prototype.findById = function(id) {
     return this.players.filter(match => match.id == id);
 }
+Matchmaking.prototype.findByHandle = function(handle) {
+    return this.players.filter(match => match.handle == handle);
+}
 Matchmaking.prototype.list = function() {
     return JSON.parse(JSON.stringify(this.players));
 }
