@@ -1,4 +1,4 @@
-const EApi = require("EApi");
+const EApi = require("ewc-api");
 const E = new EApi();
 
 function Matchmaking(options = {}) {
