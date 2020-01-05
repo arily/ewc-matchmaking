@@ -29,4 +29,4 @@ create = async function(player) {
     return obj;
 }
 
-module.exports = create;
+module.createPlayer = create;

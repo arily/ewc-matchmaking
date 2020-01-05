@@ -35,4 +35,5 @@ Matchmaking.prototype.findPlayerInRange = function(player, range = 400) {
     return suitablePlayer;
 }
 
-module.exports = Matchmaking;
+module.Matchmaking = Matchmaking;
+module.createPlayer = require("./Player").createPlayer
