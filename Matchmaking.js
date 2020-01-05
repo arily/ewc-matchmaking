@@ -1,5 +1,5 @@
-const EApi = require("ewc-api");
-const E = new EApi();
+// const EApi = require("ewc-api");
+// const E = new EApi();
 
 function Matchmaking(options = {}) {
     this.options = options;
@@ -23,10 +23,13 @@ Matchmaking.prototype.remove = function(player) {
 Matchmaking.prototype.findByQQ = function(qq) {
     return this.players.filter(match => match.qq == qq);
 }
+Matchmaking.prototype.findById = function(id) {
+    return this.players.filter(match => match.id == id);
+}
 Matchmaking.prototype.list = function() {
     return JSON.parse(JSON.stringify(this.players));
 }
-Matchmaking.prototype.findPlayerInRange = function(player, range = 400) {
+Matchmaking.prototype.findPlayersInRange = Matchmaking.prototype.findPlayerInRange = function(player, range = 400) {
     range = {
         max: player.elo + range,
         min: player.elo - range
