@@ -20,6 +20,7 @@ function EWCMatchmakingApi(server, options) {
     this.base = server;
 }
 EWCMatchmakingApi.prototype.apiCall = async function(endpoint, options) {
+	console.log(`${this.base}/api${endpoint}`);
     let response = await fetch(`${this.base}/api${endpoint}`, options)
     let json = await response.json();
     checkStatus(response, json);
