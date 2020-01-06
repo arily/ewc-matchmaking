@@ -1,8 +1,4 @@
-
 function MatchmakingPlayer() {
-
-}
-MatchmakingPlayer.prototype.init = async function(player) {
     this.handle = player.handle;
     this.id = +player.id;
     this.elo = player.elo;
@@ -11,19 +7,20 @@ MatchmakingPlayer.prototype.init = async function(player) {
     this.createdAt = new Date().getTime();
     this.status = 'matchmaking';
 }
-MatchmakingPlayer.prototype.matchmaking = function(){
+
+MatchmakingPlayer.prototype.matchmaking = function() {
     this.status = 'matchmaking';
 }
-MatchmakingPlayer.prototype.pending = function(){
+MatchmakingPlayer.prototype.pending = function() {
     this.status = 'pending';
 }
-MatchmakingPlayer.prototype.playing = function(){
+MatchmakingPlayer.prototype.playing = function() {
     this.status = 'playing';
 }
-create = async function(player) {
-    const obj = new MatchmakingPlayer();
-    await obj.init(player);
-    return obj;
-}
+// create = function(player) {
+//     const obj = new MatchmakingPlayer();
+//     obj.init(player);
+//     return obj;
+// }
 
-module.exports = create;
+module.exports = MatchmakingPlayer;

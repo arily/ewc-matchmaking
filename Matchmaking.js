@@ -85,5 +85,5 @@ Matchmaking.prototype.setPlayersPlaying = function(collection = []) {
 
 
 exports.Matchmaking = Matchmaking;
-exports.createPlayer = require("./Player")
+exports.Player = require("./Player")
 exports.Api = require('./Api');
