@@ -1,27 +1,12 @@
-const AbortController = require('abort-controller');
-const EApi = require("ewc-api");
-const E = new EApi();
-
-function timeoutSignal(timeout = 5) {
-    const controller = new AbortController()
-    const signal = controller.signal
-    setTimeout(() => {
-        controller.abort()
-    }, timeout * 1000)
-    return signal;
-}
 
 function MatchmakingPlayer() {
 
 }
 MatchmakingPlayer.prototype.init = async function(player) {
     this.handle = player.handle;
-    // this.qq = player.qq;
-    this.id = player.id;
-    this.name = player.name;
-    let elo = await E.users.elo(this.id, { signal: timeoutSignal(20) })
-    this.fob = (elo.code == 40004);
-    this.elo = elo.elo;
+    this.id = +player.id;
+    this.elo = player.elo
+    this.fob = !!player.fob
     this.createdAt = new Date().getTime();
 }
 create = async function(player) {
