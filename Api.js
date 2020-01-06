@@ -1,5 +1,6 @@
 const fetch = require('node-fetch');
 const AbortController = require('abort-controller');
+const { URLSearchParams } = require('url');
 class EndpointServerSideError extends Error {
     constructor(res) {
         super(res.message); // (1)
@@ -26,11 +27,26 @@ EWCMatchmakingApi.prototype.apiCall = async function(endpoint, options) {
 }
 
 EWCMatchmakingApi.prototype.getUser = async function({ handle }, options) {
-    return this.apiCall(`/user`, options);
+    const params = new URLSearchParams();
+    params.set('handle', handle);
+    return this.apiCall(`/user?${params.toString()}`, options);
+}
+EWCMatchmakingApi.prototype.getAll = async function(options) {
+    return this.apiCall(`/all`, options);
+}
+EWCMatchmakingApi.prototype.getSuitable = async function({ handle }, options) {
+    const params = new URLSearchParams();
+    params.set('handle', handle);
+    return this.apiCall(`/suitable?${params.toString()}`, options);
 }
 EWCMatchmakingApi.prototype.putUser = async function({ u, handle }, options) {
-    return this.apiCall(`/user`, Object.assign(options, { method: "PUT" }));
+    const params = new URLSearchParams();
+    params.set('handle', handle);
+    params.set('u', u);
+    return this.apiCall(`/user?${params.toString()}`, Object.assign(options, { method: "PUT" }));
 }
 EWCMatchmakingApi.prototype.deleteUser = async function({ handle }, options) {
-    return this.apiCall(`/user`, Object.assign(options, { method: "DELETE" }));
+    const params = new URLSearchParams();
+    params.set('handle', handle);
+    return this.apiCall(`/user?${params.toString()}`, Object.assign(options, { method: "DELETE" }));
 }
