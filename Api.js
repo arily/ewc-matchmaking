@@ -50,5 +50,10 @@ EWCMatchmakingApi.prototype.deletePlayer = async function({ handle }, options = 
     params.set('handle', handle);
     return this.apiCall(`/player?${params.toString()}`, Object.assign(options, { method: "DELETE" }));
 }
+EWCMatchmakingApi.prototype.setPlayerStatus = async function({ handle, status }, options = {}) {
+    const params = new URLSearchParams();
+    params.set('handle', handle);
+    return this.apiCall(`/player?${params.toString()}`, Object.assign(options, { method: "PATCH" }));
+}
 
 module.exports = EWCMatchmakingApi;
