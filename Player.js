@@ -16,7 +16,7 @@ function MatchmakingPlayer() {
 }
 MatchmakingPlayer.prototype.init = async function(player) {
     this.handle = player.handle;
-    this.qq = player.qq;
+    // this.qq = player.qq;
     this.id = player.id;
     this.name = player.name;
     let elo = await E.users.elo(this.id, { signal: timeoutSignal(20) })

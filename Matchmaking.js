@@ -13,7 +13,7 @@ Matchmaking.prototype.putIn = function(player) {
     return true;
 }
 Matchmaking.prototype.remove = function(player) {
-    this.players = this.players.filter(match => match.qq !== player.qq);
+    this.players = this.players.filter(match => match.handle !== player.handle);
 
     if (this.timeouts[player.id] !== undefined) {
         clearTimeout(this.timeouts[player.id]);
