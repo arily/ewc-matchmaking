@@ -68,19 +68,19 @@ MatchmakingCollection.prototype.findPlayersPending = function(collection = this.
 MatchmakingCollection.prototype.findPlayersPlaying = function(collection = this.players) {
     return new MatchmakingCollection( collection.filter(user => user.status == 'playing'));
 }
-MatchmakingCollection.prototype.setPlayersMatchmaking = function(collection = []) {
+MatchmakingCollection.prototype.setPlayersMatchmaking = function(collection = this.players) {
     return new MatchmakingCollection( collection.map(user => {
         user.matchmaking();
         return match;
     }))
 }
-MatchmakingCollection.prototype.setPlayersPending = function(collection = []) {
+MatchmakingCollection.prototype.setPlayersPending = function(collection = this.players) {
     return new MatchmakingCollection( collection.map(user => {
         user.pending();
         return match;
     }))
 }
-MatchmakingCollection.prototype.setPlayersPlaying = function(collection = []) {
+MatchmakingCollection.prototype.setPlayersPlaying = function(collection = this.players) {
     return new MatchmakingCollection( collection.map(user => {
         user.playing();
         return match;
