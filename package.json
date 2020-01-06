@@ -19,6 +19,7 @@
   "homepage": "https://github.com/arily/ewc-matchmaking#readme",
   "dependencies": {
     "abort-controller": "^3.0.0",
-    "ewc-api": "github:arily/ewc-api"
+    "ewc-api": "github:arily/ewc-api",
+    "node-fetch": "^2.6.0"
   }
 }

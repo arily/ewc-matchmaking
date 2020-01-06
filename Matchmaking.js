@@ -43,3 +43,4 @@ Matchmaking.prototype.findPlayersInRange = Matchmaking.prototype.findPlayerInRan
 
 exports.Matchmaking = Matchmaking;
 exports.createPlayer = require("./Player")
+exports.Api = require('./Api');
