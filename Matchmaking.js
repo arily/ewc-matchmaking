@@ -52,8 +52,8 @@ Matchmaking.prototype.findPlayersInRange = Matchmaking.prototype.findPlayerInRan
 }
 
 
-Matchmaking.prototype.findMatchingModIs = function(matchingMod, collection = this.players) {
-    return collection.filter(match => match.matchingMod.includes(matchingMod));
+Matchmaking.prototype.findMatchingModeIs = function(matchingMode, collection = this.players) {
+    return collection.filter(match => match.matchingMode.includes(matchingMode));
 }
 Matchmaking.prototype.findPlayersMatchmaking = function(collection = this.players) {
     return collection.filter(match => match.status == 'matchmaking');
