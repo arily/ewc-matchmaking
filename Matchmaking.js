@@ -1,6 +1,8 @@
 // const EApi = require("ewc-api");
 // const E = new EApi();
-
+function MatchmakingCollection = (collection){
+    this.players = collection;
+}
 function Matchmaking(options = {}) {
     this.options = options;
     this.players = [];
@@ -50,37 +52,39 @@ Matchmaking.prototype.findPlayersInRange = Matchmaking.prototype.findPlayerInRan
     let suitablePlayer = this.players.filter(match => range.max >= match.elo && match.elo >= range.min && match.id !== player.id);
     return suitablePlayer;
 }
+Matchmaking.prototype.getCollection = function(){
+    return new MatchmakingCollection(this.players);
+}
 
-
-Matchmaking.prototype.findMatchingModeIs = function(matchingMode, collection = this.players) {
-    return collection.filter(match => match.matchingMode.includes(matchingMode));
+MatchmakingCollection.prototype.findMatchingModeIs = function(matchingMode, collection = this.players) {
+    return new MatchmakingCollection(collection.filter(match => match.matchingMode.includes(matchingMode)));
 }
-Matchmaking.prototype.findPlayersMatchmaking = function(collection = this.players) {
-    return collection.filter(match => match.status == 'matchmaking');
+MatchmakingCollection.prototype.findPlayersMatchmaking = function(collection = this.players) {
+    return new MatchmakingCollection( collection.filter(match => match.status == 'matchmaking'));
 }
-Matchmaking.prototype.findPlayersPending = function(collection = this.players) {
-    return collection.filter(match => match.status == 'pending');
+MatchmakingCollection.prototype.findPlayersPending = function(collection = this.players) {
+    return new MatchmakingCollection( collection.filter(match => match.status == 'pending'));
 }
-Matchmaking.prototype.findPlayersPlaying = function(collection = this.players) {
-    return collection.filter(match => match.status == 'playing');
+MatchmakingCollection.prototype.findPlayersPlaying = function(collection = this.players) {
+    return new MatchmakingCollection( collection.filter(match => match.status == 'playing'));
 }
-Matchmaking.prototype.setPlayersMatchmaking = function(collection = []) {
-    return collection.map(match => {
+MatchmakingCollection.prototype.setPlayersMatchmaking = function(collection = []) {
+    return new MatchmakingCollection( collection.map(match => {
         match.matchmaking();
         return match;
-    })
+    }))
 }
-Matchmaking.prototype.setPlayersPending = function(collection = []) {
-    return collection.map(match => {
+MatchmakingCollection.prototype.setPlayersPending = function(collection = []) {
+    return new MatchmakingCollection( collection.map(match => {
         match.pending();
         return match;
-    })
+    }))
 }
-Matchmaking.prototype.setPlayersPlaying = function(collection = []) {
-    return collection.map(match => {
+MatchmakingCollection.prototype.setPlayersPlaying = function(collection = []) {
+    return new MatchmakingCollection( collection.map(match => {
         match.playing();
         return match;
-    })
+    }))
 }
 
 
