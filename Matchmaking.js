@@ -1,6 +1,6 @@
 // const EApi = require("ewc-api");
 // const E = new EApi();
-function MatchmakingCollection = (collection){
+function MatchmakingCollection (collection){
     this.players = collection;
 }
 function Matchmaking(options = {}) {
