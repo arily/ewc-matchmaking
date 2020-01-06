@@ -71,19 +71,19 @@ MatchmakingCollection.prototype.findPlayersPlaying = function(collection = this.
 MatchmakingCollection.prototype.setPlayersMatchmaking = function(collection = this.players) {
     return new MatchmakingCollection( collection.map(user => {
         user.matchmaking();
-        return match;
+        return user;
     }))
 }
 MatchmakingCollection.prototype.setPlayersPending = function(collection = this.players) {
     return new MatchmakingCollection( collection.map(user => {
         user.pending();
-        return match;
+        return user;
     }))
 }
 MatchmakingCollection.prototype.setPlayersPlaying = function(collection = this.players) {
     return new MatchmakingCollection( collection.map(user => {
         user.playing();
-        return match;
+        return user;
     }))
 }
 
