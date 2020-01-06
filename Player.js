@@ -1,4 +1,4 @@
-function MatchmakingPlayer() {
+function MatchmakingPlayer(player) {
     this.handle = player.handle;
     this.id = +player.id;
     this.elo = player.elo;
