@@ -33,6 +33,9 @@ Matchmaking.prototype.list = function() {
     return JSON.parse(JSON.stringify(this.players));
 }
 Matchmaking.prototype.findPlayersInRange = Matchmaking.prototype.findPlayerInRange = function(player, range = 400) {
+    if (player == undefined){
+        return [];
+    }
     range = {
         max: player.elo + range,
         min: player.elo - range
