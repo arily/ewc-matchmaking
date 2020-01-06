@@ -41,17 +41,7 @@ Matchmaking.prototype.findByHandle = function(handle) {
 Matchmaking.prototype.list = function() {
     return JSON.parse(JSON.stringify(this.players));
 }
-Matchmaking.prototype.findPlayersInRange = Matchmaking.prototype.findPlayerInRange = function(player, range = 400) {
-    if (player == undefined) {
-        return [];
-    }
-    range = {
-        max: player.elo + range,
-        min: player.elo - range
-    }
-    let suitablePlayer = this.players.filter(user => range.max >= user.elo && user.elo >= range.min && user.id !== player.id);
-    return suitablePlayer;
-}
+
 Matchmaking.prototype.getCollection = function(){
     return new MatchmakingCollection(this.players);
 }
@@ -85,6 +75,17 @@ MatchmakingCollection.prototype.setPlayersPlaying = function(collection = this.p
         user.playing();
         return user;
     }))
+}
+MatchmakingCollection.prototype.findRankingPlayersSuitableFor = function(player, range = 400) {
+    if (player == undefined) {
+        return [];
+    }
+    range = {
+        max: player.elo + range,
+        min: player.elo - range
+    }
+    let suitablePlayer = this.players.filter(user => range.max >= user.elo && user.elo >= range.min && user.id !== player.id);
+    return suitablePlayer;
 }
 
 
