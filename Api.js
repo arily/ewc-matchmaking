@@ -50,3 +50,5 @@ EWCMatchmakingApi.prototype.deleteUser = async function({ handle }, options) {
     params.set('handle', handle);
     return this.apiCall(`/user?${params.toString()}`, Object.assign(options, { method: "DELETE" }));
 }
+
+module.exports = EWCMatchmakingApi;
