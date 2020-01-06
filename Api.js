@@ -19,7 +19,7 @@ function EWCMatchmakingApi(server, options) {
     this.base = server;
 }
 EWCMatchmakingApi.prototype.apiCall = async function(endpoint, options) {
-    let response = await fetch(`http://api.osuwiki.cn:5005/api${endpoint}`, options)
+    let response = await fetch(`${this.base}/api${endpoint}`, options)
     let json = await response.json();
     checkStatus(response, json);
     return json;
