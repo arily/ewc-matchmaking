@@ -1,8 +1,6 @@
 // const EApi = require("ewc-api");
 // const E = new EApi();
-function MatchmakingCollection (collection){
-    this.players = collection;
-}
+
 function Matchmaking(options = {}) {
     this.options = options;
     this.players = [];
@@ -42,36 +40,39 @@ Matchmaking.prototype.list = function() {
     return JSON.parse(JSON.stringify(this.players));
 }
 
-Matchmaking.prototype.getCollection = function(){
+Matchmaking.prototype.getCollection = function() {
     return new MatchmakingCollection(this.players);
 }
 
+function MatchmakingCollection(collection) {
+    this.players = collection;
+}
 MatchmakingCollection.prototype.findMatchingModeIs = function(matchingMode, collection = this.players) {
     return new MatchmakingCollection(collection.filter(user => user.matchingMode.includes(matchingMode)));
 }
 MatchmakingCollection.prototype.findPlayersMatchmaking = function(collection = this.players) {
-    return new MatchmakingCollection( collection.filter(user => user.status == 'matchmaking'));
+    return new MatchmakingCollection(collection.filter(user => user.status == 'matchmaking'));
 }
 MatchmakingCollection.prototype.findPlayersPending = function(collection = this.players) {
-    return new MatchmakingCollection( collection.filter(user => user.status == 'pending'));
+    return new MatchmakingCollection(collection.filter(user => user.status == 'pending'));
 }
 MatchmakingCollection.prototype.findPlayersPlaying = function(collection = this.players) {
-    return new MatchmakingCollection( collection.filter(user => user.status == 'playing'));
+    return new MatchmakingCollection(collection.filter(user => user.status == 'playing'));
 }
 MatchmakingCollection.prototype.setPlayersMatchmaking = function(collection = this.players) {
-    return new MatchmakingCollection( collection.map(user => {
+    return new MatchmakingCollection(collection.map(user => {
         user.matchmaking();
         return user;
     }))
 }
 MatchmakingCollection.prototype.setPlayersPending = function(collection = this.players) {
-    return new MatchmakingCollection( collection.map(user => {
+    return new MatchmakingCollection(collection.map(user => {
         user.pending();
         return user;
     }))
 }
 MatchmakingCollection.prototype.setPlayersPlaying = function(collection = this.players) {
-    return new MatchmakingCollection( collection.map(user => {
+    return new MatchmakingCollection(collection.map(user => {
         user.playing();
         return user;
     }))
