@@ -50,34 +50,34 @@ function MatchmakingCollection(collection) {
 MatchmakingCollection.prototype.findMatchingModeIs = function(matchingMode, collection = this.players) {
     return new MatchmakingCollection(collection.filter(user => user.matchingMode.includes(matchingMode)));
 }
-MatchmakingCollection.prototype.findPlayersMatchmaking = function(collection = this.players) {
+MatchmakingCollection.prototype.findMatchmaking = function(collection = this.players) {
     return new MatchmakingCollection(collection.filter(user => user.status == 'matchmaking'));
 }
-MatchmakingCollection.prototype.findPlayersPending = function(collection = this.players) {
+MatchmakingCollection.prototype.findPending = function(collection = this.players) {
     return new MatchmakingCollection(collection.filter(user => user.status == 'pending'));
 }
-MatchmakingCollection.prototype.findPlayersPlaying = function(collection = this.players) {
+MatchmakingCollection.prototype.findPlaying = function(collection = this.players) {
     return new MatchmakingCollection(collection.filter(user => user.status == 'playing'));
 }
-MatchmakingCollection.prototype.setPlayersMatchmaking = function(collection = this.players) {
+MatchmakingCollection.prototype.setMatchmaking = function(collection = this.players) {
     return new MatchmakingCollection(collection.map(user => {
         user.matchmaking();
         return user;
     }))
 }
-MatchmakingCollection.prototype.setPlayersPending = function(collection = this.players) {
+MatchmakingCollection.prototype.setPending = function(collection = this.players) {
     return new MatchmakingCollection(collection.map(user => {
         user.pending();
         return user;
     }))
 }
-MatchmakingCollection.prototype.setPlayersPlaying = function(collection = this.players) {
+MatchmakingCollection.prototype.setPlaying = function(collection = this.players) {
     return new MatchmakingCollection(collection.map(user => {
         user.playing();
         return user;
     }))
 }
-MatchmakingCollection.prototype.findRankingPlayersSuitableFor = function(player, range = 400) {
+MatchmakingCollection.prototype.findRankingSuitableFor = function(player, range = 400) {
     if (player == undefined) {
         return [];
     }
@@ -88,7 +88,22 @@ MatchmakingCollection.prototype.findRankingPlayersSuitableFor = function(player,
     let suitablePlayer = this.players.filter(user => range.max >= user.elo && user.elo >= range.min && user.id !== player.id);
     return suitablePlayer;
 }
-
+MatchmakingCollection.prototype.toArray = function(collection = this.players){
+    return collection;
+}
+MatchmakingCollection.prototype.filter = function(func,collection = this.players){
+    return new MatchmakingCollection(collection.filter(func));
+}
+MatchmakingCollection.prototype.sort = function(func = undefined,collection = this.players){
+    collection.sort(func);
+    return this;
+}
+MatchmakingCollection.prototype.map = function(func,collection = this.players){
+    return new MatchmakingCollection(collection.map(func));
+}
+MatchmakingCollection.prototype.find = function(func,collection = this.players){
+    return new MatchmakingCollection(collection.find(func));
+}
 
 exports.Matchmaking = Matchmaking;
 exports.Player = require("./Player")

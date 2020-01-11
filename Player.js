@@ -1,3 +1,6 @@
+function PlayerNotify(){
+    this.eventListener 
+}
 function MatchmakingPlayer(player) {
     this.handle = player.handle;
     this.id = +player.id;
