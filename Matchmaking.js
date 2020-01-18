@@ -9,14 +9,14 @@ function Matchmaking(options = {}) {
 
 Matchmaking.prototype.putIn = function(player) {
     this.players.push(player);
-    this.timeouts[player.id] = setTimeout((player)=>this.remove(player), this.options.timeout || 1000 * 60 * 60 * 6, player);
+    this.timeouts[player.handle] = setTimeout((player)=>this.remove(player), this.options.timeout || 1000 * 60 * 60 * 6, player);
     return true;
 }
 Matchmaking.prototype.remove = function(player) {
     this.players = this.players.filter(match => match.handle !== player.handle);
 
-    if (this.timeouts[player.id] !== undefined) {
-        clearTimeout(this.timeouts[player.id]);
+    if (this.timeouts[player.handle] !== undefined) {
+        clearTimeout(this.timeouts[player.handle]);
     }
 
 }
